@@ -1,0 +1,130 @@
+
+.menu {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    z-index: 1001;
+}
+
+.burger {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    display: block;
+    border: none;
+    background: transparent;
+    width: 40px;
+    height: 26px;
+}
+
+.burger::before,
+.burger::after {
+    content: '';
+    left: 0;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 10px;
+    background: #999999;
+}
+
+.burger::before {
+    top: 0;
+    box-shadow: 0 11px 0 #000;
+    transition: box-shadow .3s .15s, top .3s .15s, transform .3s;
+}
+
+.burger::after {
+    bottom: 0;
+    transition: bottom .3s .15s, transform .3s;
+}
+
+.burger-checkbox:checked + .burger::before {
+    top: 11px;
+    transform: rotate(45deg);
+    box-shadow: 0 6px 0 rgba(0,0,0,0);
+    transition: box-shadow .15s, top .3s, transform .3s .15s;
+}
+
+.burger-checkbox:checked + .burger::after {
+    bottom: 11px;
+    transform: rotate(-45deg);
+    transition: bottom .3s, transform .3s .15s;
+}
+
+.menu-list {
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    padding: 42px 0;
+    margin: 0;
+    background: #4f4f4f;
+    list-style-type: none;
+    transform: translateX(-100%);
+    transition: .3s;
+    width: 250px;
+    height: 100%; /* Изменено на 100% */
+    z-index: 1000;
+}
+
+.menu-list h4 {
+    color: #fff;
+}
+
+.menu img {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.menu-item {
+    display: block;
+    padding: 8px;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.menu-item:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.burger-checkbox:checked ~ .menu-list {
+    transform: translateX(0);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+aside ul li:hover, aside ul a:hover {
+    color: #777777;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+.alert-warning {
+    clear: both;
+    width: 400px;
+    margin: 20px auto;
+    text-align: left;
+    background-color: white;
+}
+
+form {
+    width: 500px;
+    margin: 50px auto;
+}
+
+.round {
+    border-radius: 100px; /* Радиус скругления */
+    box-shadow: 0 0 0 3px black; /* Параметры теней */
+}
+

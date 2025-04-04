@@ -1,0 +1,11 @@
+/media
+
+/static
+/app1/static/app1/img
+/staticfiles
+
+/.env
+/docker-compose.yml
+/Dockerfile
+/entrypoint.sh
+/nginx.conf

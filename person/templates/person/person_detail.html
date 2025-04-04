@@ -1,0 +1,89 @@
+{% extends "app1/base.html" %}
+
+{% block title %}
+{{ person.name }}
+{% endblock %}
+
+{% block content %}
+<div class="person-profile">
+    <div class="person-header">
+        <h1>{{ person.name }}</h1>
+        <p class="person-role">{{ person.role }}</p>
+    </div>
+    <div class="person-image">
+        {% if person.image %}
+            <img src="{{ person.image.url }}" alt="{{ person.name }}" class="rounded-image">
+        {% else %}
+            <p class="no-image">Изображение отсутствует</p>
+        {% endif %}
+    </div>
+    <div class="person-history">
+        <h2>О себе</h2>
+        <p>{{ person.history|safe }}</p>
+    </div>
+</div>
+
+<style>
+    /* Общие стили */
+    .person-profile {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        max-width: 600px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .person-header {
+        margin-bottom: 20px;
+    }
+
+    .person-header h1 {
+        font-size: 2.5em;
+        margin: 0;
+        color: #333;
+    }
+
+    .person-role {
+        font-size: 1.2em;
+        color: #777;
+        margin-top: 5px;
+    }
+
+    .person-image {
+        margin-bottom: 20px;
+    }
+
+    .person-image img {
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .no-image {
+        font-size: 1.2em;
+        color: #999;
+    }
+
+    .person-history {
+        margin-bottom: 20px;
+        text-align: left; /* Изменено для правильного отображения текста */
+    }
+
+    .person-history h2 {
+        font-size: 1.8em;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .person-history p {
+        font-size: 1.1em;
+        color: #666;
+        line-height: 1.6;
+        word-wrap: break-word; /* Добавлено для переноса длинных слов */
+    }
+</style>
+{% endblock %}

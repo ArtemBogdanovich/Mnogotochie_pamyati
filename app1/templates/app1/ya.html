@@ -1,0 +1,75 @@
+{% extends 'app1/base.html' %}
+
+{% block title %}Богданович артем{% endblock %}
+
+
+{% block content %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Богданович Артем</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .profile-image {
+            float: right;
+            margin-left: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+            background: #fff;
+        }
+        .profile-image img {
+            max-width: 150px;
+            height: auto;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .section-title {
+            font-size: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Богданович Артем</h1>
+        <p>Проработал год в Музее истории ГУЛАГа экскурсоводом, является исследователем позднего ГУЛАГа - Особых лагерей. На данный момент является начинающим backend-разработчиком.</p>
+
+        <h2 class="section-title">Сайт "Многоточие памяти"</h2>
+        <p>Сайт "Многоточие памяти" был создан с использованием следующих инструментов: Python, JavaScript, Django, PostgreSQL, HTML, CSS, Ubuntu(Linux). Для развертывания использовался Docker. Для создания карты применялся PostgreSQL и Django REST framework(Python), а также JavaScript. Для хранения фотографий S3 хранилище на основе YandexCloud. Применяются API технологии для получения данных с других сайтов и вспомогательных страниц(погода и д.р.).</p>
+        <p>Сайт будет развиваться, а его отделы активно дополняться новыми данными.</p>
+
+        <h2 class="section-title">Образование</h2>
+        <p>МГПУ, направление история</p>
+
+        <h2 class="section-title">Контакты</h2>
+        <p>Старый Оскол, Белгородская область</p>
+        <p>Телефон: 7 980 393 50 99</p>
+    </div>
+</body>
+</html>
+{% endblock %}

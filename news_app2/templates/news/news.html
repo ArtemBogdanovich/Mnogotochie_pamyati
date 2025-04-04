@@ -1,0 +1,111 @@
+{% extends 'app1/base.html' %}
+
+{% block title %}Новости сайта{% endblock %}
+
+{% block content %}
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .features {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .features h1 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 320px;
+            background-color: #fff;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+        }
+        .news-image, .news-image-placeholder {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        .news-image-placeholder {
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 1.4em;
+        }
+        .news-content {
+            padding: 25px;
+        }
+        .news-content h3 {
+            margin: 0 0 15px;
+            font-size: 1.8em;
+            color: #444;
+        }
+        .news-content p {
+            margin: 0 0 25px;
+            color: #666;
+            font-size: 1.1em;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #9d9d9d;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+            font-size: 1.1em;
+        }
+        .button:hover {
+            background-color: #4f4f4f;
+        }
+    </style>
+</head>
+<body>
+    <div class="features">
+        <h1>Новости</h1>
+        {% if news %}
+            <div class="grid">
+                {% for el in news %}
+                    <div class="card">
+                        {% if el.photo %}
+                            <img src="{{ el.photo.url }}" alt="{{ el.name }}" class="news-image">
+                        {% else %}
+                            <div class="news-image-placeholder">Изображения нет</div>
+                        {% endif %}
+                        <div class="news-content">
+                            <h3>{{ el.name }}</h3>
+                            <p>{{ el.anons }}</p>
+                            <a href="{% url 'news-detail' el.id %}" class="button">Читать далее</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Новостей нет</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+{% endblock %}

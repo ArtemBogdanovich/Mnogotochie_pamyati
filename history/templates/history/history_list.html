@@ -1,0 +1,172 @@
+{% extends 'app1/base.html' %}
+
+{% block title %}
+История и фотографии
+{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        scroll-behavior: smooth; /* Enable smooth scrolling for the entire page */
+    }
+
+    .container {
+        padding-top: 20px;
+    }
+
+    h1 {
+        color: #343a40;
+        margin-bottom: 30px;
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img-top {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        color: black;
+    }
+
+    .btn-gray {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: white;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    .btn-gray:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    .pagination {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .pagination a {
+        color:black;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: color 0.3s;
+    }
+
+    .pagination a:hover {
+        color: black;
+    }
+
+    .pagination .current {
+        font-weight: bold;
+        color: #343a40;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <center><h1>История экспедиции в фотографиях</h1></center>
+        <div class="col-md-12 mb-4">
+            <div class="card shadow-sm expedition-info">
+                <div class="card-body">
+                    <h2 class="card-title">Экспедиция на Соловецкие острова</h2>
+                    <p class="card-text">
+                        Для участия в поездке - студенты прошли отбор. Они писали исследовательское мотивационное эссе, обосновывали свое участие, описывали свой опыт в экспедиционных и туристских событиях.
+                    </p>
+                    <p class="card-text">
+                        Участники экспедиции в составе 17 человек отправились 1 августа на Соловецкие острова. Средний возраст участников 22 года. Они - студенты и аспиранты различных вузов (РГГУ, ВШЭ, МГПУ, РУДН и др). Для участия в поездке - студенты прошли отбор. Они писали исследовательское мотивационное эссе, обосновывали свое участие, описывали свой опыт в экспедиционных и туристских событиях.
+                    </p>
+                    <p class="card-text">
+                        Туристский опыт важен в экспедиции, так как один из маршрутов экспедиции рассчитан на автономный 5-дневный поход по Большому Соловецкому острову. Участники поездки пройдут кольцевым маршрутом с радиальными выходами, собирая материал для создания аудиогида по следам Казаринова и Евневича.
+                    </p>
+                    <p class="card-text">
+                        <i>Константин Андреев - организатор экспедиции "Многоточие памяти" и руководитель образовательного центра Музея истории ГУЛАГа</i>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% for history in history %}
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm history-card">
+                <img src="{{ history.image.url }}" class="card-img-top" alt="Лого">
+                <div class="card-body">
+                    <h5 class="card-title">{{ history.name }}</h5>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="{% url 'history' history.id %}" type="button" class="btn btn-sm btn-gray">Смотреть</a>
+                        </div>
+                        <small class="text-body-secondary">{{ history.number }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="smooth-scroll">&laquo; первая</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="smooth-scroll">предыдущая</a>
+            {% endif %}
+
+            <span class="current">
+               <center> Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.</center>
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="smooth-scroll">следующая</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="smooth-scroll">последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.history-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                card.style.transform = 'translateY(-10px)';
+                card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+            });
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+            });
+        });
+
+        // Smooth scrolling for links with the class 'smooth-scroll'
+        const smoothScrollLinks = document.querySelectorAll('.smooth-scroll');
+        smoothScrollLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

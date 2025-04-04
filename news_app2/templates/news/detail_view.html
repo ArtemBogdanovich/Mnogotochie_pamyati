@@ -1,0 +1,93 @@
+{% extends 'app1/base.html' %}
+
+{% block title %}{{ news.name }}{% endblock %}
+
+{% block content %}
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .features {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .features img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .features h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .features p {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .features .date {
+            font-size: 1em;
+            color: #999;
+            margin-bottom: 20px;
+        }
+        .features .actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .features .actions a {
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .features .actions .btn-danger {
+            background-color: #dc3545;
+        }
+        .features .actions .btn-danger:hover {
+            background-color: #c82333;
+        }
+        .features .actions .btn-info {
+            background-color: #17a2b8;
+        }
+        .features .actions .btn-info:hover {
+            background-color: #138496;
+        }
+        @media (max-width: 768px) {
+            .features {
+                padding: 15px;
+            }
+            .features h1 {
+                font-size: 2em;
+            }
+            .features p {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="features">
+        <img src="{{ news.photo.url }}" alt="{{ news.name }}">
+        <h1>{{ news.name }}</h1>
+        <p class="date">{{ news.date }}</p>
+        <p>{{ news.text2|safe }}</p>
+    </div>
+</body>
+</html>
+{% endblock %}

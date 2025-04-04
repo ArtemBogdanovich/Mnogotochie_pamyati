@@ -1,0 +1,116 @@
+{% extends 'app1/base.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block content %}
+<main class="container">
+  <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+    <div class="col-lg-8 px-0">
+      <h1 class="display-4 fst-italic">Сайт экспедиции МНОГОТОЧИЕ ПАМЯТИ 2024</h1>
+      <p class="lead my-3">Сайт призван показать результаты экспедиции на Соловецкие острова, которая была организована в августе 2024 года Ассоциацией музеев памяти в рамках программы "Открываем Россию заново" от НИУ ВШЭ.</p>
+      <p class="lead mb-0"><a href="{% url 'about_site' %}" class="text-body-emphasis fw-bold">Узнать больше</a></p>
+    </div>
+  </div>
+
+  <div class="row g-5">
+    <div class="col-md-8">
+      <article class="blog-post">
+        <h2 class="display-5 link-body-emphasis mb-1">История экспедиции</h2>
+        <p>Здесь вы можете прочитать о том, как проходила экспедиция, какие открытия были сделаны и какие трудности встретились на пути.</p>
+        <p><a href="#" class="btn btn-outline-secondary">Читать подробнее</a></p>
+      </article>
+
+
+      <article class="blog-post">
+        <h2 class="display-5 link-body-emphasis mb-1">Участники экспедиции</h2>
+        <p>Узнайте больше о людях, которые приняли участие в экспедиции, их ролях и вкладе в проект.</p>
+        <p><a href="#" class="btn btn-outline-secondary">Читать подробнее</a></p>
+      </article>
+
+
+      <article class="blog-post">
+        <h2 class="display-5 link-body-emphasis mb-1">Интерактивная карта</h2>
+        <p>Исследуйте маршрут экспедиции и ключевые места на интерактивной карте.</p>
+        <p><a href="#" class="btn btn-outline-secondary">Открыть карту</a></p>
+      </article>
+
+
+      <article class="blog-post">
+        <h2 class="display-5 link-body-emphasis mb-1">Публикации</h2>
+        <p>Ознакомьтесь с публикациями, статьями и отчетами, связанными с экспедицией.</p>
+        <p><a href="#" class="btn btn-outline-secondary">Читать публикации</a></p>
+      </article>
+    </div>
+
+    <div class="col-md-4">
+      <div class="position-sticky" style="top: 2rem;">
+        <div class="p-4 mb-3 bg-body-tertiary rounded">
+          <h4 class="fst-italic">О проекте</h4>
+          <p class="mb-0">Узнайте больше о проекте и его целях.</p>
+        </div>
+
+
+
+        <div class="p-4 contact-section">
+  <h4 class="fst-italic">Контакты</h4>
+  <ol class="list-unstyled">
+    <li>
+      <a href="https://gulag.museum-online.moscow/" class="contact-link">
+        <i class="fas fa-university"></i>
+        МУЗЕЙ ИСТОРИИ ГУЛАГа
+      </a> <br>
+    </li>
+    <li>
+      <a href="http://openrussia.rsv.ru/" class="contact-link">
+        <i class="fas fa-globe"></i>
+        ОТКРЫВАЕМ РОССИЮ ЗАНОВО
+      </a> <br>
+    </li>
+    <li>
+      <a href="https://www.hse.ru/" class="contact-link">
+        <i class="fas fa-graduation-cap"></i>
+        НИУ ВШЭ
+      </a>
+    </li>
+  </ol>
+</div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<style>
+  .contact-section {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-section h4 {
+    margin-bottom: 20px;
+    color: #343a40;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    color: #4f4f4f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .contact-link:hover {
+    color: #7F8177;
+  }
+
+  .contact-link i {
+    margin-right: 10px;
+    font-size: 24px;
+    color: #6c757d;
+  }
+</style>
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends 'app1/base.html' %}
+
+{% block title %}
+О нас
+{% endblock %}
+
+{% block content %}
+<div class="features">
+    <h1 class="animated-title">О проекте</h1><br>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="icon-box">
+                <div class="icon-placeholder">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h2 class="fw-normal">Наши спонсоры</h2>
+                <p><a class="btn btn-secondary" href="#">Читать »</a></p>
+            </div>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <div class="icon-box">
+                <div class="icon-placeholder">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h2 class="fw-normal">Разработчик сайта</h2>
+                <p><a class="btn btn-secondary" href="{% url 'ya' %}">Читать »</a></p>
+            </div>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <div class="icon-box">
+                <div class="icon-placeholder">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h2 class="fw-normal">Что мы делали?</h2>
+                <p><a class="btn btn-secondary" href="{% url 'history_list' %}">Читать »</a></p>
+            </div>
+        </div><!-- /.col-lg-4 -->
+    </div>
+</div>
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        font-family: 'Arial', sans-serif;
+    }
+    .features {
+        text-align: center;
+        padding: 50px 0;
+        height: 100%;
+        box-sizing: border-box;
+        background-color: #f8f9fa;
+    }
+    .animated-title {
+        font-size: 36px;
+        margin-bottom: 40px;
+        animation: fadeInUp 1s ease-in-out;
+        color: #343a40;
+    }
+    .icon-box {
+        transition: transform 0.3s ease-in-out;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .icon-box:hover {
+        transform: scale(1.05);
+    }
+    .icon-placeholder {
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        background-color: #747474;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 48px;
+    }
+    .icon-box h2 {
+        margin-bottom: 20px;
+        color: #747474;
+    }
+    .icon-box p {
+        margin: 0;
+    }
+    .icon-box .btn {
+        background-color: #9d9d9d;
+        border-color: #7F8177;
+    }
+    .icon-box .btn:hover {
+        background-color: #747474;
+        border-color: #4f4f4f;
+    }
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'users/base_regist.html' %}
+
+{% block title %}Вход на сайт{% endblock %}
+
+{% block content %}
+<div class="body">
+  <div class="user">
+    <h2>Многоточие памяти 2024</h2>
+    <div class="button-container">
+      <div class="wrapper">
+        <a href="{% url 'login' %}"><span>Войти</span></a>
+      </div>
+      <div class="wrapper">
+        <a href="{% url 'register' %}"><span>Регистрация</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .user {
+    color: white;
+    text-align: center;
+  }
+
+  .body {
+    background-color: black; /* Темно-синий цвет фона */
+    height: 100vh; /* Высота страницы */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Расстояние между кнопками */
+    margin-top: 20px;
+  }
+
+  .wrapper {
+    position: relative;
+  }
+
+  a {
+    display: block;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #ecf0f1; /* Белый цвет текста */
+    border: 2px solid #ecf0f1; /* Белый цвет границы */
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+    transition: all 0.35s;
+    border-radius: 5px; /* Скругленные углы */
+  }
+
+  a span {
+    position: relative;
+    z-index: 2;
+  }
+
+  a:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: red; /* Синий цвет фона при наведении */
+    transition: all 0.35s;
+    border-radius: 5px; /* Скругленные углы */
+  }
+
+  a:hover {
+    color: #fff; /* Белый цвет текста при наведении */
+  }
+
+  a:hover:after {
+    width: 100%;
+  }
+</style>
+{% endblock %}

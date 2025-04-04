@@ -1,0 +1,28 @@
+{% extends 'app1/base.html' %}
+
+{% block title %}
+Редактировать карту
+{% endblock %}
+
+
+
+{% block content %}
+<div class="features">
+    <h4>Редактировать содержание карты</h4>
+    <div class="map">
+        <form method="POST">
+        {% csrf_token %}
+        {{ form.name }}<br>
+        {{ form.latitude }}<br>
+        {{ form.longitude }}<br>
+        {{ form.history }}<br>
+        <h6>Добавить иконку</h6>
+        {{ form.icons }}<br>
+        <h6>Фото к описанию</h6>
+        {{ form.photos }}<br>
+        <button class="btn btn-success" type="submit">Добавить метку на карту</button>
+    </form>
+    </div>
+</div>
+
+{% endblock %}

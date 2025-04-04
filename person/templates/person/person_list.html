@@ -1,0 +1,164 @@
+{% extends "app1/base.html" %}
+
+{% block title %}
+Участники
+{% endblock %}
+
+{% block content %}
+<div class="expedition-header">
+   <center><h1>Участники экспедиции</h1></center>
+</div>
+
+<div class="expedition-description">
+    <p>
+        90 лет отделяет нас от того времени, когда двое заключённых Соловецкого лагеря, ученые Пантелеймон Казаринов и Александр Евневич изучили и описали памятники культуры Соловков. Результат их многодневных походов по тропам, дорогам, лесам, берегам, озерам, болотам, высотам был оформлен в подробное описание-отчет, часть которого была обнаружена и передана в Музей истории ГУЛАГа. Объемный переплетенный рукописный том на своих страницах сохранил информацию о навсегда утраченных постройках, знаках, артефактах.
+    </p>
+    <p>
+        На карту Соловецких островов можно нанести множество точек этих объектов. Какие-то из них доступны для туристов и паломников, прибывающих на Соловки. Какие-то не избалованы вниманием странников. Экспедиция «Многоточие памяти» - это попытка больше узнать и рассказать об объектах, описанных Казариновым и Евневичем; а также пройти их маршрутами и попробовать сохранить память о навсегда исчезнувших в те годы людях и значимых точках памяти нашей культуры.
+    </p>
+    <p class="card-text">
+        <i>Константин Андреев - организатор экспедиции "Многоточие памяти" и руководитель образовательного центра Музея истории ГУЛАГа</i>
+    </p>
+</div>
+
+<div class="card-container">
+    {% for p in person %}
+    <div class="card fade-in">
+        <img src="{{ p.image.url }}" alt="{{ p.name }}" class="profile">
+        <div class="card-content">
+            <h2>{{ p.name }}</h2>
+            <p class="role">{{ p.role }}</p>
+            <p class="post">{{ p.post }}</p>
+            <a href="{% url 'person-page' p.id %}" class="btn">Подробнее</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .expedition-header h1 {
+        margin: 0;
+        font-size: 36px;
+    }
+
+    .expedition-subtitle {
+        font-size: 20px;
+        margin-top: 10px;
+        font-style: italic;
+    }
+
+    .expedition-description {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: left;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 320px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .card.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .card-content h2 {
+        margin: 0;
+        font-size: 24px;
+        color: #333;
+    }
+
+    .card-content .role {
+        font-size: 18px;
+        color: #777;
+        margin: 10px 0;
+    }
+
+    .card-content .post {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #9d9d9d;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #7F8177;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const cards = document.querySelectorAll('.card');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+    });
+</script>
+
+{% endblock %}
