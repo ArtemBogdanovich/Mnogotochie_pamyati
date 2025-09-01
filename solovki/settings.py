@@ -89,17 +89,6 @@ WSGI_APPLICATION = 'solovki.wsgi.application'
 
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'solovki',
-        'USER': 'artemka1',
-        'PASSWORD': 'artem2003',
-        'HOST': 'db',
-        'PORT': '5456',
-    }
-}
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -157,4 +146,5 @@ DATABASE_URL = os.getenv('postgres://artemka1:artem2003@localhost:5456/solovki')
 DATABASES = {
     'default': dj_database_url.config(default=DATABASE_URL)
 }
+
 
